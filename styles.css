@@ -1,8 +1,14 @@
 /* Main / html / body */
-main, html {
-    width: 100%;
-    height: 100%;
+main, html, body {
     margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    display: grid;
+    grid-template: 35% 65% / 100%;
 }
 
 /* Welcome Window */
@@ -57,4 +63,55 @@ main, html {
 #instructions_window_button {
     margin-top: 20px;
     margin-bottom: 20px;
+}
+
+/* Plantable grid */
+
+#plantable_grid {
+    grid: 2/2;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 90%;
+    height: auto; 
+}
+
+.grid_item {
+    height: 100px;
+    width: 100px;
+    background-color: #c2f0c2;
+    border: 1px solid #8bc48b;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.grid_item:hover {
+    background-color: #a8e0a8;
+}
+
+/* create plant window */
+
+.create_plant_bg {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.create_plant_window {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    width: 90%;
+    position: relative;
 }

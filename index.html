@@ -19,7 +19,7 @@
     </div>
 
     <!-- Instructions window appears on first use then whenever use click it. Gives basic rundown and how to use tips. -->
-    <div id="instructions" class="instructions_window show">
+    <div id="instructions" class="instructions_window">
         <p id="instructions_window_title">Welcome to Marina's Garden!</p>
         
         <p id="instructions_window_backstory">You&apos;ve stumbled upon a beautiful, fresh garden. There are no plants, no flowers, no trees—just soft, fertile soil stretching endlessly. In the distance, a smooth stone wall catches your eye. Carved into its surface is a name: Marina. Beneath it, an inscription reads:
@@ -55,9 +55,44 @@
     </div>
 
     <!-- main page -->
-     <div>
-        
-     </div>
+
+    <!-- create plant window (hidden until plot is clicked)-->
+    <div id="create_plant" class="create_plant_bg">
+        <div class="create_plant_window">
+            <p id="create_plant_title">Create your plant!</p>
+            <form id="create_plant_form">
+                <input type="text" name="plant_name" placeholder="Esmerelda the Fifth">
+                <input type="text" name="plant_name" placeholder="Esmerelda the Fifth">
+                <input type="text" name="plant_name" placeholder="Esmerelda the Fifth">
+                <button type="submit">Create!</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- plantable grid -->
+    <div id="plantable_grid">
+        <div class="grid_item" data-somevalue="1"></div>
+        <div class="grid_item" data-somevalue="2"></div>
+        <div class="grid_item" data-somevalue="3"></div>
+        <div class="grid_item" data-somevalue="4"></div>
+        <div class="grid_item" data-somevalue="5"></div>
+        <div class="grid_item" data-somevalue="6"></div>
+        <div class="grid_item" data-somevalue="7"></div>
+        <div class="grid_item" data-somevalue="8"></div>
+        <div class="grid_item" data-somevalue="9"></div>
+        <div class="grid_item" data-somevalue="10"></div>
+        <div class="grid_item" data-somevalue="11"></div>
+        <div class="grid_item" data-somevalue="12"></div>
+        <div class="grid_item" data-somevalue="13"></div>
+        <div class="grid_item" data-somevalue="14"></div>
+        <div class="grid_item" data-somevalue="15"></div>
+        <div class="grid_item" data-somevalue="16"></div>
+        <div class="grid_item" data-somevalue="17"></div>
+        <div class="grid_item" data-somevalue="18"></div>
+        <div class="grid_item" data-somevalue="19"></div>
+        <div class="grid_item" data-somevalue="20"></div>
+        <div class="grid_item" data-somevalue="21"></div>
+    </div>
 </body>
     <script src="scripts.js"></script>
 </html>
