@@ -1,0 +1,60 @@
+/* Main / html / body */
+main, html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+/* Welcome Window */
+.welcome_window {
+    display: none;
+    border: 3px solid black;
+    width: 500px;
+    height: 250px;
+    font-size: 20px;
+    flex-direction: column;
+    align-items: center;
+    background-color: lightgray;
+    border-radius: 30px;
+}
+
+#welcome_window_title {
+    font-size: 30px;
+    margin-bottom: 0px;
+}
+
+#welcome_window_button {
+    margin-top: 20px;
+}
+
+.show {
+    display: flex !important;
+}
+
+/* Instructions / backstory window */
+
+.instructions_window {
+    display: none;
+    border: 3px solid black;
+    font-size: 15px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: lightgray;
+}
+
+#instructions_window_title {
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#instructions_window_steps {
+    text-align: left;
+    margin: 10px;
+}
+
+#instructions_window_button {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
