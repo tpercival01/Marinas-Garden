@@ -58,14 +58,22 @@
 
     <!-- create plant window (hidden until plot is clicked)-->
     <div id="create_plant" class="create_plant_bg">
-        <div class="create_plant_window">
+        <div id="create_plant_window">
+            <div id="create_plant_exit">X</div>
             <p id="create_plant_title">Create your plant!</p>
-            <form id="create_plant_form">
-                <input type="text" name="plant_name" placeholder="Esmerelda the Fifth">
-                <input type="text" name="plant_name" placeholder="Esmerelda the Fifth">
-                <input type="text" name="plant_name" placeholder="Esmerelda the Fifth">
-                <button type="submit">Create!</button>
-            </form>
+            <label for="plant_name">Name of your plant: </label>
+            <input id="plant_name" type="text" name="plant_name" placeholder="Esmerelda the Fifth">
+            <label for="plant_type">Type of plant: </label>
+            <input id="plant_type" type="text" name="plant_name" placeholder="Monstera">
+            <label for="last_watered">Date last watered: </label>
+            <input id="last_watered" type="date" name="last_watered">
+            <label for="plant_start">Date of planting (or date of purchase): </label>
+            <input id="plant_start" type="date" name="plant_start">
+            <label for="plant_room">Which room is the plant in: </label>
+            <input id="plant_room" type="text" name="plant_room" placeholder="Living Room">
+            <label for="plant_stage">What stage of life is the plant in (best guess): </label>
+            <input id="plant_stage" type="text" name="plant_stage" placeholder="Mature">
+            <button id="create_plant_submit" type="submit">Create!</button>
         </div>
     </div>
 

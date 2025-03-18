@@ -1,4 +1,6 @@
-
+// Shows the welcome window
+// Asks for users name and stores it for future use.
+// Will only be seen on first use of website.
 
 document.getElementById("welcome_window_button").onclick = function getName(){
     var name = document.getElementById("welcome_window_input").value;
@@ -9,6 +11,9 @@ document.getElementById("welcome_window_button").onclick = function getName(){
     }
 }
 
+// Same as above, except instructions window.
+// Will show the first time then only when user clicks to open instructions.
+
 document.getElementById("instructions_window_button").onclick = function instructions(){
     var temp = document.getElementById("instructions");
 
@@ -17,14 +22,42 @@ document.getElementById("instructions_window_button").onclick = function instruc
     }
 }
 
+// Creates onclicks for all plots
+// Opens window to create a plant and store it in localstorage.
+let plant_id = 0;
+
 function addOnclicks() {
     var elements = document.getElementsByClassName("grid_item")
     for (var i = 0; i < elements.length; i++){
-        elements[i].onclick = function(){createPlant(this.dataset.somevalue)}
+        elements[i].onclick = function(){
+            document.getElementById("create_plant").classList.add("show");
+            plant_id = this.dataset.somevalue;
+        }
     }
 }
 addOnclicks()
 
-function createPlant(plot_id){
-    document.getElementById("create_plant").classList.add("show");
+function createPlant(){
+    document.getElementById("create_plant").classList.remove("show");
+    const plant_obj = {
+        id: plant_id,
+        name: document.getElementById("plant_name").value,
+        plant_type: document.getElementById("plant_type").value,
+        last_watered: document.getElementById("last_watered").value,
+        plant_start: document.getElementById("plant_start").value,
+        plant_room: document.getElementById("plant_room").value,
+        plant_stage: document.getElementById("plant_stage").value
+    }
+
+    document.getElementById("plant_name").value = ""
+    document.getElementById("plant_type").value = ""
+    document.getElementById("last_watered").value = ""
+    document.getElementById("plant_start").value = ""
+    document.getElementById("plant_room").value = ""
+    document.getElementById("plant_stage").value = ""
+
+    console.log(plant_obj)
 }
+
+document.getElementById("create_plant_submit").onclick = () => {createPlant()}
+document.getElementById("create_plant_exit").onclick = () => {document.getElementById("create_plant").classList.remove("show")}
