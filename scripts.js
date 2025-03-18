@@ -30,8 +30,12 @@ function addOnclicks() {
     var elements = document.getElementsByClassName("grid_item")
     for (var i = 0; i < elements.length; i++){
         elements[i].onclick = function(){
-            document.getElementById("create_plant").classList.add("show");
-            plot_id = this.dataset.somevalue;
+            if (document.querySelector(`[data-somevalue="${this.dataset.somevalue}"]`).classList.contains("planted")){
+                document.getElementById("plant_actions").classList.add("show");
+            } else{
+                document.getElementById("create_plant").classList.add("show");
+                plot_id = this.dataset.somevalue;
+            }
         }
     }
 }
@@ -65,3 +69,13 @@ function createPlant(){
 
 document.getElementById("create_plant_submit").onclick = () => {createPlant()}
 document.getElementById("create_plant_exit").onclick = () => {document.getElementById("create_plant").classList.remove("show")}
+document.getElementById("plant_actions_exit").onclick = () => {document.getElementById("plant_actions").classList.remove("show")}
+document.getElementById("delete_confirm_exit").onclick = () => {document.getElementById("delete_confirm").classList.remove("show")}
+document.getElementById("delete_plant_btn").onclick = function() {
+    document.getElementById("delete_confirm").classList.add("show");
+    document.getElementById("plant_actions").classList.remove("show");
+}
+
+function handleDelete() {
+
+}

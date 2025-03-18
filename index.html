@@ -77,6 +77,31 @@
         </div>
     </div>
 
+    <!-- edit / delete plant window -->
+    <div id="plant_actions" class="plant_actions_bg">
+        <div id="plant_actions_window">
+            <div id="plant_actions_exit">X</div>
+            <p id="plant_actions_title">Plant options</p>
+            <div class="plant_actions_buttons">
+                <button id="edit_plant_btn" class="plant_action_btn edit">Edit Plant</button>
+                <button id="delete_plant_btn" class="plant_action_btn delete">Delete Plant</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- delete confirmation -->
+    <div id="delete_confirm" class="confirm_bg">
+        <div id="delete_confirm_window">
+            <div id="delete_confirm_exit">X</div>
+            <div class="warning_icon">⚠️</div>
+            <p id="delete_confirm_title">Delete this plant?</p>
+            <p id="delete_confirm_message">Are you sure you want to remove this plant? This action cannot be undone.</p>
+            <div class="confirm_buttons">
+                <button id="confirm_delete" class="confirm_btn delete">Delete Plant</button>
+            </div>
+        </div>
+    </div>
+    
     <!-- plantable grid -->
     <div id="plantable_grid">
         <div class="grid_item" data-somevalue="1"></div>
