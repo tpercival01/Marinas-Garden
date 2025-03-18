@@ -66,7 +66,7 @@ body {
 }
 
 /* Plantable grid */
-
+/*
 #plantable_grid {
     grid: 2/2;
     display: grid;
@@ -89,68 +89,87 @@ body {
 
 .grid_item:hover {
     background-color: #a8e0a8;
+}*/
+
+#plantable_grid {
+    grid: 2/2;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 90%;
+    height: auto; 
+}
+
+.grid_item {
+    height: 100px;
+    width: 100px;
+    background: linear-gradient(to bottom, #c2f0c2, #b2e0b2);
+    border-radius: 8px;
+    border: 1px solid #8bc48b;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.grid_item::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background: linear-gradient(to bottom, #a87f5d, #8B5A2B);
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+.grid_item:hover {
+    background: linear-gradient(to bottom, #a8e0a8, #98d098);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+.grid_item.planted {
+    background: linear-gradient(to bottom, #a8e0a8, #8ed08e);
+    border-color: #6aaa6a;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Plant visualization - appears when planted */
+.grid_item.planted::before {
+    content: "🪴";
+    position: absolute;
+    font-size: 90px;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    animation: growPlant 0.5s forwards;
+}
+
+/* Soil becomes more visible when planted */
+.grid_item.planted::after {
+    height: 25px;
+    opacity: 1;
+    background: linear-gradient(to bottom, #8B5A2B, #6d4534);
+}
+
+@keyframes growPlant {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) scale(1);
+    }
 }
 
 /* create plant window */
-/*
-.create_plant_bg {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1000;
-    justify-content: center;
-    align-items: center;
-}
-
-#create_plant_title {
-    font-size: 20px;
-    font-weight: bold;
-    text-align: center;
-}
-
-#create_plant_window {
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    max-width: 500px;
-    width: 90%;
-    position: relative;
-    display: flex;
-    flex-flow: column;
-}
-
-#create_plant_window label {
-    margin-bottom: 5px;
-}
-
-#create_plant_window input {
-    width: 50%;
-    height: 35px;
-    font-size: 15px;
-    border-radius: 10px;
-}
-
-#create_plant_exit {
-    position: absolute;
-    left: 10px;
-    top: 10px;
-    font-size: 30px;
-    color: black;
-    cursor: pointer;
-    font-family: Arial, Helvetica, sans-serif;
-    transition: color 0.3s ease;
-}
-
-#create_plant_exit:hover {
-    color: rgb(117, 117, 117);
-}
-
-*/
 .create_plant_bg {
     display: none;
     position: fixed;

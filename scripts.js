@@ -24,14 +24,14 @@ document.getElementById("instructions_window_button").onclick = function instruc
 
 // Creates onclicks for all plots
 // Opens window to create a plant and store it in localstorage.
-let plant_id = 0;
+let plot_id = 0;
 
 function addOnclicks() {
     var elements = document.getElementsByClassName("grid_item")
     for (var i = 0; i < elements.length; i++){
         elements[i].onclick = function(){
             document.getElementById("create_plant").classList.add("show");
-            plant_id = this.dataset.somevalue;
+            plot_id = this.dataset.somevalue;
         }
     }
 }
@@ -40,7 +40,7 @@ addOnclicks()
 function createPlant(){
     document.getElementById("create_plant").classList.remove("show");
     const plant_obj = {
-        id: plant_id,
+        id: plot_id,
         name: document.getElementById("plant_name").value,
         plant_type: document.getElementById("plant_type").value,
         last_watered: document.getElementById("last_watered").value,
@@ -56,7 +56,11 @@ function createPlant(){
     document.getElementById("plant_room").value = ""
     document.getElementById("plant_stage").value = ""
 
-    console.log(plant_obj)
+    console.log(plant_obj);
+
+    //localStorage.setItem(plot_id, plant_obj);
+
+    document.querySelector(`[data-somevalue="${plot_id}"]`).classList.add("planted");
 }
 
 document.getElementById("create_plant_submit").onclick = () => {createPlant()}
