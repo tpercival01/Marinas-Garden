@@ -1,3 +1,6 @@
+var test = {};
+let plot_id = 0;
+
 // Shows the welcome window
 // Asks for users name and stores it for future use.
 // Will only be seen on first use of website.
@@ -24,7 +27,6 @@ document.getElementById("instructions_window_button").onclick = function instruc
 
 // Creates onclicks for all plots
 // Opens window to create a plant and store it in localstorage.
-let plot_id = 0;
 
 function addOnclicks() {
     var elements = document.getElementsByClassName("grid_item")
@@ -64,12 +66,14 @@ function openPlantWindow(mode){
         title.innerText = "Edit your plant!"
         submitButton.innerText = "Save Changes!"
 
-        document.getElementById("plant_name").value = "1"
-        document.getElementById("plant_type").value = "2"
-        document.getElementById("last_watered").value = "3"
-        document.getElementById("plant_start").value = "4"
-        document.getElementById("plant_room").value = "5"
-        document.getElementById("plant_stage").value = "6"
+        var temp_obj = test[plot_id];
+
+        document.getElementById("plant_name").value = temp_obj["name"] || ""
+        document.getElementById("plant_type").value = temp_obj["plant_type"] || ""
+        document.getElementById("last_watered").value = temp_obj["last_watered"] || ""
+        document.getElementById("plant_start").value = temp_obj["plant_start"] || ""
+        document.getElementById("plant_room").value = temp_obj["plant_room"] || ""
+        document.getElementById("plant_stage").value = temp_obj["plant_stage"] || ""
 
         window.classList.add("show");
         window.classList.add("edit");
@@ -96,10 +100,13 @@ function createPlant(){
     document.getElementById("plant_stage").value = ""
 
     console.log(plant_obj);
+    test[plot_id] = plant_obj;
+    console.log(test);
 
     //localStorage.setItem(plot_id, plant_obj);
 
     document.querySelector(`[data-somevalue="${plot_id}"]`).classList.add("planted");
+    document.querySelector(`[data-somevalue="${plot_id}"]`).title = plant_obj["name"];
 }
 
 // Mostly handles all of the various onclicks for windows showing and disappearing
@@ -114,6 +121,7 @@ document.getElementById("plant_submit").onclick = function(){
         editPlant()
     }
 }
+
 document.getElementById("plant_exit").onclick = () => {document.getElementById("plant_container").classList = "plant_bg"}
 document.getElementById("plant_actions_exit").onclick = () => {document.getElementById("plant_actions").classList = "plant_bg"}
 document.getElementById("delete_confirm_exit").onclick = () => {document.getElementById("delete_confirm").classList = "plant_bg"}
@@ -133,10 +141,32 @@ function handleDelete() {
     document.querySelector(`[data-somevalue="${plot_id}"]`).classList.remove("planted");
     document.getElementById("delete_confirm").classList.remove("show");
     document.getElementById("plant_container").classList = "plant_bg";
+
+    if (test[plot_id]){
+        delete test[plot_id]
+    } else{
+        console.log("nope")
+    }
 }
 
 // handles editing plants
 
 function editPlant(){
     document.getElementById("plant_container").classList.remove("show");
+
+    const new_plant_obj = {
+        id: plot_id,
+        name: document.getElementById("plant_name").value,
+        plant_type: document.getElementById("plant_type").value,
+        last_watered: document.getElementById("last_watered").value,
+        plant_start: document.getElementById("plant_start").value,
+        plant_room: document.getElementById("plant_room").value,
+        plant_stage: document.getElementById("plant_stage").value
+    }
+
+    if (test[plot_id]){
+        test[plot_id] = new_plant_obj;
+    } else{
+        console.log("nope")
+    }
 }
