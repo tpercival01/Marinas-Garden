@@ -1,3 +1,21 @@
+window.onload = () => {
+    var userdata = localStorage.getItem("userdata");
+
+    if (userdata) {
+        console.log(userdata)
+        console.log("nice")
+        handleSaveData(userdata)
+    } else {
+        localStorage.setItem("userdata", {})
+        userdata = {}
+    }
+}
+
+function handleSaveData(userdata){
+    
+}
+
+
 var test = {};
 let plot_id = 0;
 

@@ -9,6 +9,8 @@ main, html, body {
 body {
     display: grid;
     grid-template: 35% 65% / 100%;
+    background: url("/Users/tpercival/Scripts/Fun/full stack/marinas_garden/assets/background.png")
+    no-repeat center center fixed;
 }
 
 /* Welcome Window */
@@ -116,13 +118,13 @@ body {
 .grid_item.planted::before {
     content: "🪴";
     position: absolute;
-    font-size: 90px;
     top: -5px;
     left: 50%;
     transform: translateX(-50%);
+    font-size: 90px;
     z-index: 2;
     animation: growPlant 0.5s forwards;
-}
+  }  
 
 /* Soil becomes more visible when planted */
 .grid_item.planted::after {
