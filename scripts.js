@@ -52,9 +52,14 @@ window.onload = () => {
 
 function handleSaveData(userdata){
     console.log(userdata)
-    
-    for (const [key] of Object.entries(userdata)){
-        console.log(`${key}: ${userdata[key]}`)
+
+    for (const key in userdata){
+        if (userdata.hasOwnProperty(key)){
+            const user = userdata[key]
+            console.log(user.id)
+            console.log(user.name)
+            console.log(user.last_watered)
+        }
     }
 }
 
