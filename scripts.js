@@ -1,18 +1,61 @@
 window.onload = () => {
-    var userdata = localStorage.getItem("userdata");
-
-    if (userdata) {
-        console.log(userdata)
-        console.log("nice")
-        handleSaveData(userdata)
-    } else {
-        localStorage.setItem("userdata", {})
-        userdata = {}
+    userdata = {
+        16: {
+            id: "16",
+            last_watered: "20/03/2025",
+            name: "Esmerelda",
+            plant_room: "Living Room",
+            plant_stage: "Sprout",
+            plant_start: "20/03/2025",
+            plant_type: "Ficus"
+        },
+        2: {
+            id: "2",
+            last_watered: "20/03/2025",
+            name: "Beatrice",
+            plant_room: "Living Room",
+            plant_stage: "Sprout",
+            plant_start: "20/03/2025",
+            plant_type: "Ficus"
+        },
+        20: {
+            id: "20",
+            last_watered: "20/03/2025",
+            name: "Asmodeus",
+            plant_room: "Living Room",
+            plant_stage: "Mature",
+            plant_start: "20/03/2025",
+            plant_type: "Monstera"
+        },
+        10: {
+            id: "10",
+            last_watered: "20/03/2025",
+            name: "Bartholomew",
+            plant_room: "Living Room",
+            plant_stage: "Mature",
+            plant_start: "20/03/2025",
+            plant_type: "Cactus"
+        }
     }
+    //var userdata = localStorage.getItem("userdata");
+
+    // if (userdata) {
+    //     handleSaveData(userdata)
+    // } else {
+    //     localStorage.setItem("userdata", {})
+    //     userdata = {}
+    // }
+
+    handleSaveData(userdata)
+
 }
 
 function handleSaveData(userdata){
+    console.log(userdata)
     
+    for (const [key] of Object.entries(userdata)){
+        console.log(`${key}: ${userdata[key]}`)
+    }
 }
 
 
