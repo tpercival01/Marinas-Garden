@@ -9,7 +9,7 @@ main, html, body {
 body {
     display: grid;
     grid-template: 35% 65% / 100%;
-    background: url("/Users/tpercival/Scripts/Fun/full stack/marinas_garden/assets/background_light.png")
+    background: url("/Users/tpercival/Scripts/Fun/full stack/marinas_garden/assets/backgrounds/background_light.png")
     no-repeat center center fixed;
     background-size: cover;
 }
@@ -93,6 +93,56 @@ body {
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
 }
 
+.grid_item[data-stage="Sprout"]{
+    background-image: url('/Users/tpercival/Scripts/Fun/full stack/marinas_garden/assets/plants/plant_1.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 120px;
+    width: 120px;
+}
+
+.grid_item[data-stage="Teen"]{
+    background-image: url('/Users/tpercival/Scripts/Fun/full stack/marinas_garden/assets/plants/plant_2.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 120px;
+    width: 120px;
+}
+
+/*
+.grid_item[data-stage="Mature"][data-type="Cactus"]{
+    background-image: url('/Users/tpercival/Scripts/Fun/full stack/marinas_garden/assets/plants/cactus.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 120px;
+    width: 120px;
+}*/
+
+.grid_item[data-stage="Mature"][data-type="Monstera"]{
+    background-image: url('/Users/tpercival/Scripts/Fun/full stack/marinas_garden/assets/plants/monstera.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 120px;
+    width: 120px;
+}
+
+.grid_item[data-stage="Mature"][data-type="Spider"]{
+    background-image: url('/Users/tpercival/Scripts/Fun/full stack/marinas_garden/assets/plants/spider.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 120px;
+    width: 120px;
+}
+
+.grid_item[data-stage="Mature"][data-type="Orchid"]{
+    background-image: url('/Users/tpercival/Scripts/Fun/full stack/marinas_garden/assets/plants/orchid.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 120px;
+    width: 120px;
+}
+
+/*
 .grid_item::after {
     content: "";
     position: absolute;
@@ -104,7 +154,6 @@ body {
     transition: all 0.3s ease;
 }
 
-/* Plant visualization - appears when planted */
 .grid_item.planted::before {
     content: "";
     position: absolute;
@@ -113,12 +162,13 @@ body {
     transform: translateX(-50%);
     width: 120px;
     height: 120px; 
-    background-image: url('/Users/tpercival/Scripts/Fun/full stack/marinas_garden/assets/plant_1.png'); /* Update with your PNG path */
+    background-image: url('/Users/tpercival/Scripts/Fun/full stack/marinas_garden/assets/plants/plant_1.png');
     background-size: contain;
     background-repeat: no-repeat;
     z-index: 2;
     animation: growPlant 0.5s forwards;
-}  
+} 
+*/
 
 @keyframes growPlant {
     from {
@@ -130,6 +180,7 @@ body {
         transform: translateX(-50%) scale(1);
     }
 }
+
 
 /* create plant window */
 .plant_bg {

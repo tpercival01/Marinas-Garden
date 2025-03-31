@@ -1,4 +1,8 @@
+let plot_id = 0;
+var userdata = {}
+
 window.onload = () => {
+
     userdata = {
         16: {
             id: "16",
@@ -34,16 +38,34 @@ window.onload = () => {
             plant_room: "Living Room",
             plant_stage: "Mature",
             plant_start: "20/03/2025",
-            plant_type: "Cactus"
+            plant_type: "Orchid"
+        },
+        5: {
+            id: "5",
+            last_watered: "20/03/2025",
+            name: "Marina",
+            plant_room: "Living Room",
+            plant_stage: "Teen",
+            plant_start: "20/03/2025",
+            plant_type: "Monstera"
+        },
+        19: {
+            id: "19",
+            last_watered: "20/03/2025",
+            name: "Thomas",
+            plant_room: "Living Room",
+            plant_stage: "Mature",
+            plant_start: "20/03/2025",
+            plant_type: "Spider"
         }
     }
-    //var userdata = localStorage.getItem("userdata");
+    //userdata = localStorage.getItem("userdata");
 
     // if (userdata) {
     //     handleSaveData(userdata)
     // } else {
     //     localStorage.setItem("userdata", {})
-    //     userdata = {}
+    // 
     // }
 
     handleSaveData(userdata)
@@ -58,15 +80,13 @@ function handleSaveData(userdata){
             const user = userdata[key]
 
             var plant = document.querySelector(`[data-somevalue="${user.id}"]`)
+            plant.setAttribute("data-type", user.plant_type)
+            plant.setAttribute("data-stage", user.plant_stage)
             plant.classList.add("planted")
             plant.title = user.name
         }
     }
 }
-
-
-var test = {};
-let plot_id = 0;
 
 // Shows the welcome window
 // Asks for users name and stores it for future use.
@@ -133,7 +153,7 @@ function openPlantWindow(mode){
         title.innerText = "Edit your plant!"
         submitButton.innerText = "Save Changes!"
 
-        var temp_obj = test[plot_id];
+        var temp_obj = userdata[plot_id];
 
         document.getElementById("plant_name").value = temp_obj["name"] || ""
         document.getElementById("plant_type").value = temp_obj["plant_type"] || ""
@@ -166,14 +186,14 @@ function createPlant(){
     document.getElementById("plant_room").value = ""
     document.getElementById("plant_stage").value = ""
 
-    console.log(plant_obj);
-    test[plot_id] = plant_obj;
-    console.log(test);
+    userdata[plot_id] = plant_obj;
+    localStorage.setItem("userdata", userdata)
 
-    //localStorage.setItem(plot_id, plant_obj);
-
-    document.querySelector(`[data-somevalue="${plot_id}"]`).classList.add("planted");
-    document.querySelector(`[data-somevalue="${plot_id}"]`).title = plant_obj["name"];
+    var plant = document.querySelector(`[data-somevalue="${plot_id}"]`)
+    plant.classList.add("planted");
+    plant.title = plant_obj["name"];
+    plant.setAttribute("data-type", plant_obj.plant_type)
+    plant.setAttribute("data-stage", plant_obj.plant_stage)
 }
 
 // Mostly handles all of the various onclicks for windows showing and disappearing
@@ -205,12 +225,18 @@ document.getElementById("edit_plant_btn").onclick = function(){
 document.getElementById("confirm_delete").onclick = () => {handleDelete()}
 
 function handleDelete() {
-    document.querySelector(`[data-somevalue="${plot_id}"]`).classList.remove("planted");
+    var plant = document.querySelector(`[data-somevalue="${plot_id}"]`);
+    plant.classList.remove("planted");
+    plant.removeAttribute("data-stage")
+    plant.removeAttribute("data-type")
+    
     document.getElementById("delete_confirm").classList.remove("show");
     document.getElementById("plant_container").classList = "plant_bg";
 
-    if (test[plot_id]){
-        delete test[plot_id]
+
+    if (userdata[plot_id]){
+        delete userdata[plot_id]
+        //localStorage.setItem("userdata", userdata)
     } else{
         console.log("nope")
     }
@@ -231,8 +257,9 @@ function editPlant(){
         plant_stage: document.getElementById("plant_stage").value
     }
 
-    if (test[plot_id]){
-        test[plot_id] = new_plant_obj;
+    if (userdata[plot_id]){
+        userdata[plot_id] = new_plant_obj;
+        //localStorage.setItem("userdata", userdata)
     } else{
         console.log("nope")
     }
