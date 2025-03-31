@@ -9,7 +9,7 @@ main, html, body {
 body {
     display: grid;
     grid-template: 35% 65% / 100%;
-    background: url("/Users/tpercival/Scripts/Fun/full stack/marinas_garden/assets/backgrounds/background_light.png")
+    background: url("assets/backgrounds/background_light.png")
     no-repeat center center fixed;
     background-size: cover;
 }
@@ -105,19 +105,19 @@ body {
     width: 200px;
     left: 350px;
     top: 685px;
-    background-image: url('/Users/tpercival/Scripts/Fun/full stack/marinas_garden/assets/plants/plant_1.png');
+    background-image: url('assets/plants/plant_1.png');
     background-size: contain;
     background-repeat: no-repeat;
 }
 
 .grid_item[data-stage="Sprout"]{
-    background-image: url('/Users/tpercival/Scripts/Fun/full stack/marinas_garden/assets/plants/plant_1.png');
+    background-image: url('assets/plants/plant_1.png');
     background-size: contain;
     background-repeat: no-repeat;
 }
 
 .grid_item[data-stage="Teen"]{
-    background-image: url('/Users/tpercival/Scripts/Fun/full stack/marinas_garden/assets/plants/plant_2.png');
+    background-image: url('assets/plants/plant_2.png');
     background-size: contain;
     background-repeat: no-repeat;
 }
@@ -132,19 +132,19 @@ body {
 }*/
 
 .grid_item[data-stage="Mature"][data-type="Monstera"]{
-    background-image: url('/Users/tpercival/Scripts/Fun/full stack/marinas_garden/assets/plants/monstera.png');
+    background-image: url('assets/plants/monstera.png');
     background-size: contain;
     background-repeat: no-repeat;
 }
 
 .grid_item[data-stage="Mature"][data-type="Spider"]{
-    background-image: url('/Users/tpercival/Scripts/Fun/full stack/marinas_garden/assets/plants/spider.png');
+    background-image: url('assets/plants/spider.png');
     background-size: contain;
     background-repeat: no-repeat;
 }
 
 .grid_item[data-stage="Mature"][data-type="Orchid"]{
-    background-image: url('/Users/tpercival/Scripts/Fun/full stack/marinas_garden/assets/plants/orchid.png');
+    background-image: url('assets/plants/orchid.png');
     background-size: contain;
     background-repeat: no-repeat;
 }
