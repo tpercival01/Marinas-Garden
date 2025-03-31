@@ -68,6 +68,8 @@ body {
     margin-bottom: 20px;
 }
 
+/* Plant plots */
+/*
 #plantable_grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
@@ -76,37 +78,48 @@ body {
     margin: 20px auto;
     max-width: 90%;
     height: auto; 
+} */
+
+#plantable_grid {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
 }
 
 .grid_item {
-    height: 120px;
-    width: 120px;
+    height: 200px;
+    width: 200px;
     cursor: pointer;
     transition: all 0.3s ease;
-    position: relative;
+    position: absolute;
     overflow: hidden;
 }
 
 .grid_item:hover {
-    background: linear-gradient(to bottom, #a8e0a8, #98d098);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+    transform: scale(1.02);
+    filter: brightness(120%);
+}
+
+#one {
+    height: 200px;
+    width: 200px;
+    left: 350px;
+    top: 685px;
+    background-image: url('/Users/tpercival/Scripts/Fun/full stack/marinas_garden/assets/plants/plant_1.png');
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .grid_item[data-stage="Sprout"]{
     background-image: url('/Users/tpercival/Scripts/Fun/full stack/marinas_garden/assets/plants/plant_1.png');
     background-size: contain;
     background-repeat: no-repeat;
-    height: 120px;
-    width: 120px;
 }
 
 .grid_item[data-stage="Teen"]{
     background-image: url('/Users/tpercival/Scripts/Fun/full stack/marinas_garden/assets/plants/plant_2.png');
     background-size: contain;
     background-repeat: no-repeat;
-    height: 120px;
-    width: 120px;
 }
 
 /*
@@ -122,53 +135,19 @@ body {
     background-image: url('/Users/tpercival/Scripts/Fun/full stack/marinas_garden/assets/plants/monstera.png');
     background-size: contain;
     background-repeat: no-repeat;
-    height: 120px;
-    width: 120px;
 }
 
 .grid_item[data-stage="Mature"][data-type="Spider"]{
     background-image: url('/Users/tpercival/Scripts/Fun/full stack/marinas_garden/assets/plants/spider.png');
     background-size: contain;
     background-repeat: no-repeat;
-    height: 120px;
-    width: 120px;
 }
 
 .grid_item[data-stage="Mature"][data-type="Orchid"]{
     background-image: url('/Users/tpercival/Scripts/Fun/full stack/marinas_garden/assets/plants/orchid.png');
     background-size: contain;
     background-repeat: no-repeat;
-    height: 120px;
-    width: 120px;
 }
-
-/*
-.grid_item::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 20px;
-    opacity: 0.6;
-    transition: all 0.3s ease;
-}
-
-.grid_item.planted::before {
-    content: "";
-    position: absolute;
-    top: -5px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 120px;
-    height: 120px; 
-    background-image: url('/Users/tpercival/Scripts/Fun/full stack/marinas_garden/assets/plants/plant_1.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    z-index: 2;
-    animation: growPlant 0.5s forwards;
-} 
-*/
 
 @keyframes growPlant {
     from {
@@ -180,7 +159,6 @@ body {
         transform: translateX(-50%) scale(1);
     }
 }
-
 
 /* create plant window */
 .plant_bg {
