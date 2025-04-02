@@ -1,8 +1,20 @@
 let plot_id = 0;
 var userdata = {}
+// This will store the plant data for the timings and auto completing fields.
+const plantData = [
+    {
+        name: "Monstera"
+    },
+    {
+        name: "Spider"
+    },
+    {
+        name: "Orchid"
+    }
+]
 
 window.onload = () => {
-
+    /*
     userdata = {
         16: {
             id: "16",
@@ -58,18 +70,18 @@ window.onload = () => {
             plant_start: "20/03/2025",
             plant_type: "Spider"
         }
+    }*/
+
+    userdata = JSON.parse(localStorage.getItem("userdata"));
+
+    if (Object.keys(userdata).length > 0) {
+        console.log("data found - loading data")
+        handleSaveData(userdata)
+    } else {
+        console.log("no data found - starting new")
+        localStorage.setItem("userdata", JSON.stringify({}))
+    
     }
-    //userdata = localStorage.getItem("userdata");
-
-    // if (userdata) {
-    //     handleSaveData(userdata)
-    // } else {
-    //     localStorage.setItem("userdata", {})
-    // 
-    // }
-
-    handleSaveData(userdata)
-
 }
 
 function handleSaveData(userdata){
@@ -83,6 +95,7 @@ function handleSaveData(userdata){
             plant.setAttribute("data-type", user.plant_type)
             plant.setAttribute("data-stage", user.plant_stage)
             plant.classList.add("planted")
+            plant.classList.remove("empty")
             plant.title = user.name
         }
     }
@@ -135,6 +148,7 @@ function openPlantWindow(mode){
     const window = document.getElementById("plant_container");
     const title = document.getElementById("plant_title");
     const submitButton = document.getElementById("plant_submit");
+    populateDropDown();
 
     if (mode === "create"){
         title.innerText = "Create your plant!";
@@ -167,6 +181,20 @@ function openPlantWindow(mode){
     }
 }
 
+function populateDropDown(){
+    const selectElement = document.getElementById("plant_type")
+    if (!selectElement) return;
+
+    selectElement.options.length = 1;
+
+    plantData.forEach(element => {
+        const option = document.createElement("option")
+        option.value = element.name
+        option.textContent = element.name
+        selectElement.appendChild(option)
+    });
+}
+
 function createPlant(){
     document.getElementById("plant_container").classList.remove("show");
     const plant_obj = {
@@ -187,7 +215,7 @@ function createPlant(){
     document.getElementById("plant_stage").value = ""
 
     userdata[plot_id] = plant_obj;
-    localStorage.setItem("userdata", userdata)
+    localStorage.setItem("userdata", JSON.stringify(userdata))
 
     var plant = document.querySelector(`[data-somevalue="${plot_id}"]`)
     plant.classList.add("planted");
@@ -227,8 +255,10 @@ document.getElementById("confirm_delete").onclick = () => {handleDelete()}
 function handleDelete() {
     var plant = document.querySelector(`[data-somevalue="${plot_id}"]`);
     plant.classList.remove("planted");
+    plant.classList.add("empty");
     plant.removeAttribute("data-stage")
     plant.removeAttribute("data-type")
+    plant.title = "";
     
     document.getElementById("delete_confirm").classList.remove("show");
     document.getElementById("plant_container").classList = "plant_bg";
@@ -236,7 +266,7 @@ function handleDelete() {
 
     if (userdata[plot_id]){
         delete userdata[plot_id]
-        //localStorage.setItem("userdata", userdata)
+        localStorage.setItem("userdata", JSON.stringify(userdata))
     } else{
         console.log("nope")
     }
@@ -257,9 +287,13 @@ function editPlant(){
         plant_stage: document.getElementById("plant_stage").value
     }
 
+    var plant = document.querySelector(`[data-somevalue="${plot_id}"]`);
+    plant.setAttribute("data-stage", new_plant_obj.plant_stage)
+    plant.setAttribute("data-type", new_plant_obj.plant_type)
+
     if (userdata[plot_id]){
         userdata[plot_id] = new_plant_obj;
-        //localStorage.setItem("userdata", userdata)
+        localStorage.setItem("userdata", JSON.stringify(userdata))
     } else{
         console.log("nope")
     }

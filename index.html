@@ -64,7 +64,9 @@
             <label for="plant_name">Name of your plant: </label>
             <input id="plant_name" type="text" name="plant_name" placeholder="Esmerelda the Fifth">
             <label for="plant_type">Type of plant: </label>
-            <input id="plant_type" type="text" name="plant_name" placeholder="Monstera">
+            <select name="plant_type" id="plant_type">
+                <option value="">--Please choose an option--</option>
+            </select>
             <label for="last_watered">Date last watered: </label>
             <input id="last_watered" type="date" name="last_watered">
             <label for="plant_start">Date of planting (or date of purchase): </label>
@@ -103,27 +105,27 @@
     </div>
     
     <!-- plantable grid -->
-    <div id="plantable_grid">
-        <div class="grid_item" id="one" data-somevalue="1"></div>
-        <div class="grid_item" data-somevalue="2"></div>
-        <div class="grid_item" data-somevalue="3"></div>
-        <div class="grid_item" data-somevalue="4"></div>
-        <div class="grid_item" data-somevalue="5"></div>
-        <div class="grid_item" data-somevalue="6"></div>
-        <div class="grid_item" data-somevalue="7"></div>
-        <div class="grid_item" data-somevalue="8"></div>
-        <div class="grid_item" data-somevalue="9"></div>
-        <div class="grid_item" data-somevalue="10"></div>
-        <div class="grid_item" data-somevalue="11"></div>
-        <div class="grid_item" data-somevalue="12"></div>
-        <div class="grid_item" data-somevalue="13"></div>
-        <div class="grid_item" data-somevalue="14"></div>
-        <div class="grid_item" data-somevalue="15"></div>
-        <div class="grid_item" data-somevalue="16"></div>
-        <div class="grid_item" data-somevalue="17"></div>
-        <div class="grid_item" data-somevalue="18"></div>
-        <div class="grid_item" data-somevalue="19"></div>
-        <div class="grid_item" data-somevalue="20"></div>
+    <div id="plantable_grid" class="bg-container">
+        <div class="grid_item empty" id="one" data-somevalue="1"></div>
+        <div class="grid_item empty" id="two" data-somevalue="2"></div>
+        <div class="grid_item empty" id="three" data-somevalue="3"></div>
+        <div class="grid_item empty" id="four" data-somevalue="4"></div>
+        <div class="grid_item empty" data-somevalue="5"></div>
+        <div class="grid_item empty" data-somevalue="6"></div>
+        <div class="grid_item empty" data-somevalue="7"></div>
+        <div class="grid_item empty" data-somevalue="8"></div>
+        <div class="grid_item empty" data-somevalue="9"></div>
+        <div class="grid_item empty" data-somevalue="10"></div>
+        <div class="grid_item empty" data-somevalue="11"></div>
+        <div class="grid_item empty" data-somevalue="12"></div>
+        <div class="grid_item empty" data-somevalue="13"></div>
+        <div class="grid_item empty" data-somevalue="14"></div>
+        <div class="grid_item empty" data-somevalue="15"></div>
+        <div class="grid_item empty" data-somevalue="16"></div>
+        <div class="grid_item empty" data-somevalue="17"></div>
+        <div class="grid_item empty" data-somevalue="18"></div>
+        <div class="grid_item empty" data-somevalue="19"></div>
+        <div class="grid_item empty" data-somevalue="20"></div>
     </div>
 </body>
     <script src="scripts.js"></script>

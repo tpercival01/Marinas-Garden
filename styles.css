@@ -4,6 +4,7 @@ main, html, body {
     padding: 0;
     height: 100%;
     width: 100%;
+    overflow: hidden;
 }
 
 body {
@@ -69,22 +70,6 @@ body {
 }
 
 /* Plant plots */
-/*
-#plantable_grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    gap: 20px;
-    padding: 20px;
-    margin: 20px auto;
-    max-width: 90%;
-    height: auto; 
-} */
-
-#plantable_grid {
-    position: relative;
-    width: 100%;
-    padding-bottom: 56.25%;
-}
 
 .grid_item {
     height: 200px;
@@ -100,14 +85,20 @@ body {
     filter: brightness(120%);
 }
 
+.empty:hover {
+    background-color: white;
+}
+
 #one {
-    height: 200px;
-    width: 200px;
-    left: 350px;
-    top: 685px;
-    background-image: url('/Users/tpercival/Scripts/Fun/full stack/marinas_garden/assets/plants/plant_1.png');
-    background-size: contain;
-    background-repeat: no-repeat;
+    transform: translate(-50%, -50%);
+    left: 68%;
+    top: 39%;
+}
+
+#two {
+    transform: translate(-50%, -50%);
+    left: 30%;
+    top: 39%;
 }
 
 .grid_item[data-stage="Sprout"]{
@@ -220,7 +211,7 @@ body {
     font-weight: 500;
 }
 
-#plant_window input {
+#plant_window input, #plant_window select {
     width: 100%;
     box-sizing: border-box;
     height: auto;
@@ -233,14 +224,14 @@ body {
     background-color: rgba(255, 255, 255, 0.8);
 }
 
-#plant_window input:focus {
+#plant_window input:focus, #plant_window select:focus {
     border-color: #55efc4;
     outline: none;
     box-shadow: 0 0 0 3px rgba(85, 239, 196, 0.2);
     background-color: white;
 }
 
-#plant_window input::placeholder {
+#plant_window input::placeholder, #plant_window select::placeholder {
     color: #b2bec3;
 }
 
