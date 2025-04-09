@@ -149,6 +149,7 @@ function openPlantWindow(mode){
     const title = document.getElementById("plant_title");
     const submitButton = document.getElementById("plant_submit");
     populateDropDown();
+    populateDropDownStage();
 
     if (mode === "create"){
         title.innerText = "Create your plant!";
@@ -193,6 +194,22 @@ function populateDropDown(){
         option.textContent = element.name
         selectElement.appendChild(option)
     });
+}
+
+function populateDropDownStage(){
+    const selectElementStage = document.getElementById("plant_stage");
+    if (!selectElementStage) return;
+
+    selectElementStage.options.length = 1;
+    
+    const stages = ["Sprout", "Teen", "Mature"]
+
+    stages.forEach((element) => {
+        const optionStage = document.createElement("option")
+        optionStage.value = element;
+        optionStage.textContent = element;
+        selectElementStage.appendChild(optionStage);
+    })
 }
 
 function createPlant(){
@@ -298,3 +315,4 @@ function editPlant(){
         console.log("nope")
     }
 }
+
