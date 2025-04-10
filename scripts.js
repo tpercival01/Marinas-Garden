@@ -1,6 +1,7 @@
 let plot_id = 0;
 var userdata = {}
 // This will store the plant data for the timings and auto completing fields.
+
 const plantData = [
     {
         name: "Monstera"
@@ -316,3 +317,37 @@ function editPlant(){
     }
 }
 
+function checkDate(){
+    const plantData = localStorage.getItem("userdata");
+    if (!plantData) return;
+
+    const plantsObject = JSON.parse(plantData);
+    const plants = Object.values(plantsObject);
+
+    var now = new Date().getTime();
+
+    plants.forEach((plant) => {
+        let lastWateredTime;
+        var waitDays = 7;
+        const timeThreshold = now - waitDays * 24 * 60 * 60 * 1000;
+
+        console.log("Current Time:", new Date(now).toLocaleString());
+        console.log("Time Threshold (Watering Due if last watered before this):", 
+                    new Date(timeThreshold).toLocaleString());
+
+        if (plant.last_watered){
+            lastWateredTime = new Date(plant.last_watered).toLocaleDateString();
+
+            console.log(`Plant ${plant.name} last watered at: ${lastWateredTime}`)
+
+            if (lastWateredTime <= timeThreshold){
+                console.log(`Plant ${plant.name} is due for watering`)
+            }
+        }
+
+    });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    checkDate()
+})
