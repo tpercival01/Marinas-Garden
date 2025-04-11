@@ -146,6 +146,35 @@ body {
     }
 }
 
+/* watering reminder */
+
+.parched {
+    animation-name: parched-glow-pulse;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    transition: filter 0.3s ease;
+    backface-visibility: hidden;
+    transform-origin: center center;
+}
+
+@keyframes parched-glow-pulse {
+    0% {
+        filter: drop-shadow(0 0 0px rgba(255, 0, 0, 0)); 
+        transform: scale(1);
+    }
+    50% {
+    filter: drop-shadow(
+        0 0 20px rgba(255, 0, 0, 1)
+    );
+    transform: scale(1.05); 
+    }
+    100% {
+    filter: drop-shadow(0 0 0px rgba(255, 0, 0, 0));
+    transform: scale(1);
+    }
+}
+
 /* create plant window */
 .plant_bg {
     display: none;
@@ -441,6 +470,25 @@ body {
     flex-flow: column;
     align-items: center;
     border: 1px solid rgba(255, 118, 117, 0.3);
+}
+
+/* watered plant button */
+
+.plant_action_btn.water {
+    background: linear-gradient(to right, #3cebb9, #00b894);
+    color: white;
+    box-shadow: 0 4px 10px rgba(0, 184, 148, 0.2);
+    width: 100%; 
+    margin-bottom: 1rem;
+}
+
+.plant_action_btn.water:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 184, 148, 0.3);
+}
+
+.plant_action_btn.water::before {
+    content: "💧";
 }
 
 /* Warning icon */
