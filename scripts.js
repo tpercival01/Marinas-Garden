@@ -373,6 +373,8 @@ function checkDate() {
 }
 
 document.getElementById("water_plant_btn").onclick = () => {
+  document.getElementById("plant_actions").classList.remove("show");
+
   const currentPlant = document.querySelector(
     `[data-somevalue="${[plot_id]}"]`
   );
@@ -383,7 +385,8 @@ document.getElementById("water_plant_btn").onclick = () => {
     var temp = userdata[plot_id];
     temp.last_watered = new Date(now).toLocaleDateString();
     console.log(temp);
-    //localStorage.setItem("userdata", JSON.stringify(userdata))
+    checkDate();
+    localStorage.setItem("userdata", JSON.stringify(userdata));
   } else {
     console.log("nope");
   }
