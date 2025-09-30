@@ -142,6 +142,7 @@ document.getElementById("welcome_window_button").onclick = function getName() {
 
   if (name.length > 0) {
     document.getElementById("welcome_window").classList.remove("show");
+    document.getElementById("instructions").classList.add("show");
   }
 };
 

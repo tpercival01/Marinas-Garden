@@ -2,7 +2,7 @@
     --sky-blue: #0fa9d4;
     --grass-green: #3cc512;
     --soil-brown: #8b521b;
-    --border-color: #B2D0DC;
+    --border-color: #fff;
     --text-color: #6A828A;
     --window-bg: #eda1c2;
     --button-primary-bg: #B8E0E6;
@@ -42,6 +42,12 @@ body {
     background-color: var(--window-bg);
     border-radius: 30px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    left: 33%;
+    top: 10%;
 }
 
 #welcome_window_title {
@@ -71,10 +77,11 @@ body {
     border-radius: 16px;
     max-width: 600px;
     width: 90%;
-    max-height: 90vh;
     overflow-y: auto;
-    padding: 2rem;
-    position: relative;
+    padding: 50px;
+    position: fixed;
+    left: 33%;
+    z-index: 100;
 }
 
 #instructions_window_title {
@@ -640,11 +647,11 @@ body {
 
 @media (max-width: 1024px) {
     #plantable_grid {
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         grid-template-rows: auto;
         padding-left: 20px;
         padding-right: 50px;
-        padding-top: 100px;
+        padding-top: 150px;
         justify-items: center;
         row-gap: 150px;
         overflow-y: auto;
@@ -718,5 +725,20 @@ body {
       height: 150px;   /* smaller height */
       bottom: 5px;      /* adjust anchor so they sit inside the soil */
       background-size: contain; /* just in case scaling needs help */
+    }
+
+    .welcome_window {
+        position: fixed;
+        left: 2%;
+    }
+
+    .instructions_window {
+        left: 4%;
+        top: 2%;
+        max-width: 70vw;
+        font-size: 15px;
+        overflow-y: auto;
+        max-height: 85vh;
+        position: fixed;
     }
   }
