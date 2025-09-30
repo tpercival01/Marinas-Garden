@@ -171,6 +171,8 @@ function handlePlantClick() {
       plot_id = this.dataset.somevalue;
       if (this.classList.contains("planted")) {
         document.getElementById("plant_actions").classList.add("show");
+        const display = userdata[plot_id]["last_watered"].split("-").reverse().join("-");
+        document.getElementById("last_watered_date").innerText = `Last watered: ${display}`;
       } else {
         openPlantWindow("create");
       }

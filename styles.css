@@ -554,7 +554,6 @@ body {
     color: white;
     box-shadow: 0 4px 10px rgba(178, 208, 220, 0.3);
     width: 100%;
-    margin-bottom: 1rem;
 }
 
 .plant_action_btn.water:hover {
@@ -564,6 +563,20 @@ body {
 
 .plant_action_btn.water::before {
     content: "💧";
+}
+
+.plant_action_btn.date {
+    background: linear-gradient(to right, var(--button-primary-bg), var(--button-primary-hover-bg));
+    color: white;
+    box-shadow: 0 4px 10px rgba(178, 208, 220, 0.3);
+    width: 90%;
+    margin-bottom: 1rem;
+    height: 20px;
+}
+
+.plant_action_btn.date:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(178, 208, 220, 0.4);
 }
 
 .warning_icon {
