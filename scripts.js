@@ -14,6 +14,23 @@ const plantData = [
   },
 ];
 
+
+function generateGrid() {
+  PLOT_COUNT = 15;
+
+  const grid = document.getElementById("plantable_grid");
+  grid.innerHTML = "";
+
+  for (let i = 1; i <= PLOT_COUNT; i++) {
+    const div = document.createElement("div");
+    div.classList.add("grid_item", "empty");
+    div.dataset.somevalue = i;
+    grid.appendChild(div);
+  }
+
+  handlePlantClick();
+}
+
 window.onload = () => {
   /*
     userdata = {
@@ -72,7 +89,7 @@ window.onload = () => {
             plant_type: "Spider"
         }
     }*/
-
+  generateGrid();
   userdata = JSON.parse(localStorage.getItem("userdata"));
   if (userdata) {
     if (Object.keys(userdata).length > 0) {
@@ -86,6 +103,15 @@ window.onload = () => {
   } else {
     console.log("no data found - starting new");
     localStorage.setItem("userdata", JSON.stringify({}));
+  }
+};
+
+window.onresize = () => {
+  const newCount = 15;
+  if (newCount !== PLOT_COUNT) {
+    PLOT_COUNT = newCount;
+    generateGrid(PLOT_COUNT);
+    handleSaveData(userdata);
   }
 };
 

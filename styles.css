@@ -100,34 +100,36 @@ body {
 }
 
 #plantable_grid {
+    position: fixed;
+    bottom: 0;
+    left: 50px;
+    right: 0;
     display: grid;
-    grid-template-columns: repeat(10, 150px);
-    grid-template-rows: repeat(1, 150px);
-    padding-left: 130px;
-    padding-bottom: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-    margin-top: auto;
-    grid-row: 2;
+    grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+    gap: 150px;
+    justify-content: center;
+    align-content: start;
+    padding-top: 150px;
+    padding-right: 50px;
+    background-color: transparent;
+    overflow-y: auto;
+    max-height: 50vh;
 }
 
 .grid_item {
     width: 125px;
     height: 50px;
-    border: 2px solid #ffffff;
-    box-sizing: border-box;
+    border: 2px solid #fff;
+    border-radius: 50px;
+    background-color: var(--soil-brown);
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 0.8em;
-    text-align: center;
+    box-sizing: border-box;
     cursor: pointer;
-    transition: all 0.3s ease;
-    overflow: visible;
-    border-radius: 50px;
     position: relative;
-    background-color: var(--soil-brown);
     z-index: 1;
-}
+  }
 
 .grid_item:hover {
     transform: scale(1.02);
@@ -633,3 +635,88 @@ body {
 .confirm_btn:active {
     transform: translateY(1px);
 }
+
+/* Responsive tweaks for smaller screens */
+
+@media (max-width: 1024px) {
+    #plantable_grid {
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: auto;
+        padding-left: 20px;
+        padding-right: 50px;
+        padding-top: 100px;
+        justify-items: center;
+        row-gap: 150px;
+        overflow-y: auto;
+        max-height: 150vh;
+    }
+
+    .grid_item {
+        width: 100px;
+        height: 50px;
+        border-radius: 20px;
+    }
+
+    .grid_item.planted::after {
+        width: 120px;
+        height: 120px;
+    }
+    body {
+        background-position: center center;
+    }
+}
+  
+  @media (max-width: 670px) {
+    body {
+        background-position: center top;
+        background-size: cover;
+    }
+
+    #plantable_grid {
+      grid-template-columns: repeat(2, 1fr);
+      padding-top: 100px;
+      padding-right: 50px;
+      row-gap: 150px;
+      overflow-y: auto;
+      max-height: 75vh;
+    }
+  
+    .grid_item {
+      width: 100px;
+      height: 50px;
+      font-size: 0.7em;
+    }
+  
+    .grid_item.planted::after {
+      width: 80px;
+      height: 80px;
+    }
+  
+    .welcome_window,
+    .instructions_window,
+    #plant_window,
+    #plant_actions_window,
+    #delete_confirm_window {
+      width: 90%;
+      font-size: 0.8rem;
+    }
+  
+    #welcome_window_input,
+    #plant_window input,
+    #plant_window select,
+    button {
+      font-size: 0.8rem;
+      padding: 6px 8px;
+    }
+
+    .grid_item.planted[data-stage="Sprout"]::after,
+    .grid_item.planted[data-stage="Teen"]::after,
+    .grid_item.planted[data-stage="Mature"][data-type="Monstera"]::after,
+    .grid_item.planted[data-stage="Mature"][data-type="Spider"]::after,
+    .grid_item.planted[data-stage="Mature"][data-type="Orchid"]::after {
+      width: 150px;   /* smaller width */
+      height: 150px;   /* smaller height */
+      bottom: 5px;      /* adjust anchor so they sit inside the soil */
+      background-size: contain; /* just in case scaling needs help */
+    }
+  }
