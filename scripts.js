@@ -72,9 +72,6 @@ window.onload = () => {
             plant_type: "Spider"
         }
     }*/
-  chrome.browserAction.setIcon({
-    path: "assets/plants/plant_1.png"
-  });
 
   userdata = JSON.parse(localStorage.getItem("userdata"));
   if (userdata) {
