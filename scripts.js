@@ -72,6 +72,9 @@ window.onload = () => {
             plant_type: "Spider"
         }
     }*/
+  chrome.browserAction.setIcon({
+    path: "assets/plants/plant_1.png"
+  });
 
   userdata = JSON.parse(localStorage.getItem("userdata"));
   if (userdata) {
@@ -134,25 +137,20 @@ document.getElementById("instructions_window_button").onclick =
 // Creates onclicks for all plots
 // Opens window to create a plant and store it in localstorage.
 
-function addOnclicks() {
+function handlePlantClick() {
   var elements = document.getElementsByClassName("grid_item");
   for (var i = 0; i < elements.length; i++) {
     elements[i].onclick = function () {
-      if (
-        document
-          .querySelector(`[data-somevalue="${this.dataset.somevalue}"]`)
-          .classList.contains("planted")
-      ) {
+      plot_id = this.dataset.somevalue;
+      if (this.classList.contains("planted")) {
         document.getElementById("plant_actions").classList.add("show");
-        plot_id = this.dataset.somevalue;
       } else {
-        plot_id = this.dataset.somevalue;
         openPlantWindow("create");
       }
     };
   }
 }
-addOnclicks();
+handlePlantClick();
 
 function openPlantWindow(mode) {
   const window = document.getElementById("plant_container");
@@ -249,6 +247,7 @@ function createPlant() {
 
   var plant = document.querySelector(`[data-somevalue="${plot_id}"]`);
   plant.classList.add("planted");
+  plant.classList.remove("empty");
   plant.title = plant_obj["name"];
   plant.setAttribute("data-type", plant_obj.plant_type);
   plant.setAttribute("data-stage", plant_obj.plant_stage);
