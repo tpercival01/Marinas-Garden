@@ -1,90 +1,73 @@
 # **Marina's Digital Garden**
 
-An interactive full-stack web application built with Python, Flask, and JavaScript that allows users to manage a virtual garden. The application features a persistent database, a complete RESTful API for all plant operations, and is served by a production-grade Gunicorn server.
-
-[View the live demo here](https://github.com/tpercival01/Marinas-Garden)
+Marina's Digital Garden is an interactive web application that allows users to create and manage a virtual garden while tracking the care of their real-life plants. Users can click on empty plots of land to add plants, input basic details, and let the system fetch care information automatically. The app is designed to be both functional and engaging, with a clean, pixel-art-inspired aesthetic and a focus on simplicity and customization.
 
 ---
 
-## 🚀 Tech Stack
+## **Features**
 
-This project demonstrates a full-stack architecture, separating concerns between the backend API and the frontend UI.
+### 🌱 **Interactive Garden**
+- A grid-based garden where users can click on empty plots to add plants.
+- Dynamic visuals that reflect the state of the garden.
 
-| Category      | Technology                                      |
-| :------------ | :---------------------------------------------- |
-| **Frontend**  | `HTML5`, `CSS3`, `JavaScript (ES6+)`            |
-| **Backend**   | `Python 3`, `Flask`                             |
-| **Database**  | `SQLite` / `PostgreSQL`, `SQLAlchemy` (ORM)     |
-| **API**       | `RESTful`, `JSON`                               |
-| **Deployment**| `Gunicorn` (WSGI Server)                        |
+### 🌸 **Add and Manage Plants**
+- Users can input the type of plant and optionally give it a personalized name.
+- The system fetches care details (e.g., watering frequency, sunlight requirements) automatically.
+- Users can edit or add extra details, such as custom notes or plant location.
 
----
+### 🛠️ **Customizable Care Details**
+- Default care details are fetched from a database or API.
+- Users can override or customize details like watering frequency, sunlight needs, and fertilizer schedules.
 
-## ✨ Key Features
+### 📋 **Plant Tracking**
+- Track when plants were last watered and receive reminders for care.
+- Add optional details like plant location, health status, and custom notes.
 
--   **Full CRUD Functionality:** Users can Create, Read, Update, and Delete plants in their garden.
--   **RESTful API:** A complete API backend handles all data manipulation. All communication between the front-end and back-end is done asynchronously via `fetch()` requests.
--   **Persistent Data Storage:** Plant data is stored in a SQLite database and managed with the SQLAlchemy ORM, ensuring user data is saved across sessions.
--   **Dynamic UI:** The front-end is built with vanilla JavaScript and manipulates the DOM to provide a seamless, real-time user experience without page reloads.
--   **Self-Contained & Served:** The application is served as a single unit by a production-ready Gunicorn server, with Flask handling both API requests and the rendering of the front-end application.
-
----
-
-## 🛠️ Installation & Setup
-
-To run this project locally, follow these steps:
-
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/your-username/marinas-garden-project.git
-    cd marinas-garden-project/backend
-    ```
-
-2.  **Create and activate a virtual environment:**
-    ```bash
-    # For macOS/Linux
-    python3 -m venv venv
-    source venv/bin/activate
-
-    # For Windows
-    python -m venv venv
-    .\venv\Scripts\activate
-    ```
-
-3.  **Install the required dependencies:**
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-4.  **Initialize the database:**
-    -   Open the Python interpreter in your terminal by typing `python`.
-    -   Run the following commands to create the `garden.db` file and tables:
-    ```python
-    from app import app, db
-    with app.app_context():
-        db.create_all()
-    exit()
-    ```
-
-5.  **Run the application using Gunicorn:**
-    ```bash
-    gunicorn --bind 0.0.0.0:8000 app:app
-    ```
-
-6.  **Open your browser** and navigate to `http://127.0.0.1:8000`.
+### 🎨 **Pixel-Art Aesthetic**
+- A visually appealing, minimalist design inspired by pixel art.
+- Clean and responsive UI for both desktop and mobile devices.
 
 ---
 
-## 🔌 API Endpoints
+## **Technologies Used**
 
-The backend provides the following RESTful API endpoints:
+### **Frontend**
+- **HTML5**: For structuring the application and creating a responsive layout.
+- **CSS3**: For styling the application, including pixel-art-inspired visuals and animations.
+- **JavaScript (ES6)**: For interactivity, dynamic updates, and managing user inputs.
 
-| Method   | Endpoint            | Description                                        |
-| :------- | :------------------ | :------------------------------------------------- |
-| `GET`    | `/api/plants`       | Retrieves a list of all plants in the garden.      |
-| `POST`   | `/api/plants`       | Creates a new plant with data from the request body. |
-| `PUT`    | `/api/plants/<id>`  | Updates the details of a specific plant by its ID. |
-| `DELETE` | `/api/plants/<id>`  | Deletes a specific plant by its ID.                |
+---
+
+## **Project Goals**
+
+1. **Simplify Plant Care**: Provide users with an easy way to track and manage their real-life plants.
+2. **Engage Users**: Create a visually appealing and interactive experience that encourages users to care for their plants.
+3. **Scalability**: Build a system that can grow to include more plant types, features, and integrations.
+4. **Accessibility**: Ensure the app is responsive and works seamlessly on both desktop and mobile devices.
+
+---
+
+## **Future Enhancements**
+
+### 🌟 **Advanced Features**
+- **Community Gardens**: Allow users to share their gardens with others or collaborate on a single garden.
+- **Gamification**: Add achievements or rewards for consistent plant care (e.g., "Water 10 plants in a row").
+- **Seasonal Changes**: Reflect real-world seasons in the garden's visuals (e.g., spring blossoms, autumn leaves).
+- **AI Integration**: Use AI to suggest plant care tips or identify plants from user-uploaded photos.
+
+### 🔧 **Technical Improvements**
+- **Push Notifications**: Remind users to water or fertilize their plants via browser or mobile notifications.
+- **Offline Mode**: Allow users to access and update their garden even without an internet connection.
+- **Data Export**: Let users export their plant data for backup or sharing.
+
+---
+
+## **Contributing**
+
+We welcome contributions to improve Marina's Digital Garden! If you'd like to contribute:
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Submit a pull request with a detailed description of your changes.
 
 ---
 
