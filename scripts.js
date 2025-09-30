@@ -117,7 +117,10 @@ window.onresize = () => {
 
 function handleSaveData(userdata) {
   console.log(userdata);
-
+  if (userdata) {
+    document.getElementById("welcome_window").classList.remove("show");
+    document.getElementById("instructions").classList.remove("show");
+  }
   for (const key in userdata) {
     if (userdata.hasOwnProperty(key)) {
       const user = userdata[key];
@@ -175,6 +178,10 @@ function handlePlantClick() {
   }
 }
 handlePlantClick();
+
+function formatDateForInput(d = new Date()){
+  return d.toISOString().split("T")[0];
+}
 
 function openPlantWindow(mode) {
   const window = document.getElementById("plant_container");
@@ -406,7 +413,7 @@ document.getElementById("water_plant_btn").onclick = () => {
 
   if (userdata[plot_id]) {
     var temp = userdata[plot_id];
-    temp.last_watered = new Date(now).toLocaleDateString();
+    temp.last_watered = formatDateForInput(new Date());
     console.log(temp);
     checkDate();
     localStorage.setItem("userdata", JSON.stringify(userdata));
