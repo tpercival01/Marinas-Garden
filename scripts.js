@@ -376,29 +376,26 @@ function checkDate() {
   const plants = Object.values(plantsObject);
 
   var now = new Date().getTime();
-  console.log("Current Time:", new Date(now).toLocaleString());
-
+  
   plants.forEach((plant) => {
     let lastWateredTime;
     var waitDays = 7;
     var timeThreshold = now - waitDays * 24 * 60 * 60 * 1000;
-    timeThreshold = new Date(timeThreshold).toLocaleDateString();
-
-    console.log(
-      "Time Threshold (Watering Due if last watered before this):",
-      timeThreshold
-    );
+    timeThreshold = new Date(timeThreshold);
 
     if (plant.last_watered) {
-      lastWateredTime = new Date(plant.last_watered).toLocaleDateString();
+      lastWateredTime = new Date(plant.last_watered);
 
-      console.log(`Plant ${plant.name} last watered at: ${lastWateredTime}`);
-
-      if (lastWateredTime <= timeThreshold) {
+      if (lastWateredTime < timeThreshold) {
         console.log(`Plant ${plant.name} is due for watering`);
         document
           .querySelector(`[data-somevalue="${plant.id}"]`)
           .classList.add("parched");
+      } else {
+        document.querySelector(`[data-somevalue="${plant.id}"]`)
+        .classList.remove("parched");
+        document.querySelector(`[data-somevalue="${plant.id}"]`)
+        .classList.add("paused");
       }
     }
   });
@@ -410,16 +407,30 @@ document.getElementById("water_plant_btn").onclick = () => {
   const currentPlant = document.querySelector(
     `[data-somevalue="${[plot_id]}"]`
   );
+  currentPlant.classList.add("paused");
   currentPlant.classList.remove("parched");
-  var now = new Date().getTime();
 
   if (userdata[plot_id]) {
     var temp = userdata[plot_id];
     temp.last_watered = formatDateForInput(new Date());
-    console.log(temp);
-    checkDate();
     localStorage.setItem("userdata", JSON.stringify(userdata));
-  } else {
-    console.log("nope");
   }
 };
+
+document.getElementById("water_all_button").onclick = () => {
+    for (let i = 1; i <= Object.keys(userdata).length; i++){
+      const currentPlant = document.querySelector(
+        `[data-somevalue="${[userdata[i]["id"]]}"]`
+      );
+      currentPlant.classList.add("paused");
+      currentPlant.classList.remove("parched");
+
+      if (userdata[plot_id]) {
+        userdata[plot_id].last_watered = formatDateForInput(new Date());
+        localStorage.setItem("userdata", JSON.stringify(userdata));
+      }
+    }
+}
+
+const intervalID = setInterval(checkDate, 60000);
+// clearInterval(intervalID);

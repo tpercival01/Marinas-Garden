@@ -1,16 +1,22 @@
 :root {
-    --sky-blue: #0fa9d4;
-    --grass-green: #3cc512;
-    --soil-brown: #8b521b;
-    --border-color: #fff;
-    --text-color: #6A828A;
-    --window-bg: #eda1c2;
-    --button-primary-bg: #B8E0E6;
-    --button-primary-hover-bg: #A0D4DD;
-    --button-edit-bg: #DCD0FF;
-    --button-edit-hover-bg: #C3B4E3;
-    --button-delete-bg: #F8BBD0;
-    --button-delete-hover-bg: #F4A7C1;
+    --sky-blue: #007ACC;
+    --grass-green: #4CAF50;
+    --soil-brown: #694612;
+    --border-color: #FFFFFF;
+    --text-color: #212121;
+    --window-bg: #FFEB3B;
+  
+    --button-primary-bg: #03A9F4;
+    --button-primary-hover-bg: #0288D1;
+    --button-edit-bg: #9C27B0;
+    --button-edit-hover-bg: #7B1FA2;
+    --button-delete-bg: #F44336;
+    --button-delete-hover-bg: #D32F2F;
+  
+    --accent-orange: #FF9800;
+    --accent-purple: #673AB7;
+    --accent-teal: #009688;
+    --background-dark: #424242;
 }
 
 html,
@@ -106,6 +112,31 @@ body {
     margin-bottom: 20px;
 }
 
+#water_all_button {
+    padding: 0.8rem 1rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    z-index: 10000;
+    left: 43%;
+    top: 5%;
+    position: relative;
+    background-color: var(--button-delete-bg);
+}
+
+#water_all_button:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(195, 179, 230, 0.4);
+}
+
 #plantable_grid {
     position: fixed;
     bottom: 0;
@@ -169,35 +200,35 @@ body {
 }
 
 .grid_item.planted[data-stage="Sprout"]::after {
-    width: 200px;
+    width: 170px;
     height: 180px;
     bottom: -20px;
     background-image: url('assets/plants/plant_1.png');
 }
 
 .grid_item.planted[data-stage="Teen"]::after {
-    width: 200px;
+    width: 170px;
     height: 180px;
     bottom: -15px;
     background-image: url('assets/plants/plant_2.png');
 }
 
 .grid_item.planted[data-stage="Mature"][data-type="Monstera"]::after {
-    width: 200px;
+    width: 170px;
     height: 180px;
     bottom: -5px;
     background-image: url('assets/plants/monstera.png');
 }
 
 .grid_item.planted[data-stage="Mature"][data-type="Spider"]::after {
-    width: 200px;
+    width: 170px;
     height: 180px;
     bottom: -5px;
     background-image: url('assets/plants/spider.png');
 }
 
 .grid_item.planted[data-stage="Mature"][data-type="Orchid"]::after {
-    width: 200px;
+    width: 170px;
     height: 180px;
     background-image: url('assets/plants/orchid.png');
 }
@@ -232,6 +263,9 @@ body {
     transition: filter 0.3s ease;
     backface-visibility: hidden;
     transform-origin: center bottom;
+}
+.paused {
+    animation-play-state: paused;
 }
 
 @keyframes parched-glow-pulse {
@@ -572,6 +606,7 @@ body {
     width: 90%;
     margin-bottom: 1rem;
     height: 20px;
+    cursor: default;
 }
 
 .plant_action_btn.date:hover {
@@ -692,6 +727,10 @@ body {
         background-size: cover;
     }
 
+    #water_all_button {
+        left: 37%;
+    }
+
     #plantable_grid {
       grid-template-columns: repeat(2, 1fr);
       padding-top: 100px;
@@ -753,5 +792,19 @@ body {
         overflow-y: auto;
         max-height: 85vh;
         position: fixed;
+    }
+
+    .plant_action_btn.date {
+        background: linear-gradient(to right, var(--button-edit-bg), var(--button-edit-hover-bg));
+        color: white;
+        box-shadow: 0 4px 10px rgba(178, 208, 220, 0.3);
+        width: auto;
+        margin-bottom: 1rem;
+        height: 20px;
+    }
+    
+    .plant_action_btn.date:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 15px rgba(178, 208, 220, 0.4);
     }
   }
