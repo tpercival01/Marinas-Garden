@@ -4,7 +4,7 @@
     --soil-brown: #694612;
     --border-color: #FFFFFF;
     --text-color: #212121;
-    --window-bg: #FFEB3B;
+    --window-bg: #f192f2;
   
     --button-primary-bg: #03A9F4;
     --button-primary-hover-bg: #0288D1;
@@ -35,6 +35,7 @@ body {
     background-size: cover;
     font-family: Arial, sans-serif;
     color: var(--text-color);
+    overflow: auto;
 }
 
 .welcome_window {
@@ -112,6 +113,31 @@ body {
     margin-bottom: 20px;
 }
 
+.intro_btn {
+    padding: 0.8rem 1rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    text-decoration: none;
+}
+
+.intro_btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(195, 179, 230, 0.4);
+}
+
+.intro_btn:active {
+    transform: translateY(1px);
+}
+
 #water_all_button {
     padding: 0.8rem 1rem;
     border-radius: 10px;
@@ -125,7 +151,7 @@ body {
     justify-content: center;
     gap: 0.5rem;
     text-decoration: none;
-    z-index: 10000;
+    z-index: 99;
     left: 43%;
     top: 5%;
     position: relative;
